@@ -1,22 +1,26 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import random as rnd
 
-test_arc_list=[(1, 2), (2, 3), (3, 4), (3, 5), (2, 5)]
-multi_g=nx.MultiGraph()
+arc_lst=[ [ i, j, rnd.random()] for i in range(1, 10) for j in range(1, 10) ]
+g=nx.Graph()
+g.add_weighted_edges_from(arc_lst)
 
-multi_g.add_edges_from(test_arc_list)
-print(nx.connected_components(multi_g))
-print(nx.degree_centrality(multi_g))
-print(nx.closeness_centrality(multi_g))
-print(nx.betweenness_centrality(multi_g))
+print("centrality")
+print(nx.degree_centrality(g))
+print(nx.closeness_centrality(g))
+print(nx.betweenness_centrality(g))
 
-
-nx.draw(multi_g)
+print("clustering")
+#print(nx.clustering(g, 0))
+##drawing graph
+nx.draw(g)
 plt.savefig("draw.png")
 plt.close()
 
-nx.draw_random(multi_g)
-plt.savefig("draw_random.png")
+nx.draw_random(g)
+plt.set_title("g, draw_random")
+plt.savefig("draw_random.pdf")
 plt.close()
 #nx.draw_random(multi_g)
 #nx.draw_circular(multi_g)

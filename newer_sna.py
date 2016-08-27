@@ -16,8 +16,12 @@ def processed_kwd(kwd):
 		kwd=kwd.replace(each_target_char, replacer)
 	while "  " in kwd:
 		kwd=kwd.replace("  ", " ").strip().lower()
+	# how to make plural noun to singular
+	# are there any library can be used?
 	return kwd
-
+#######
+#############
+#### main ######
 print( processed_kwd("dd-d* *  /dDDdfd ") )
 #design paper class
 #save all related information about each paper
