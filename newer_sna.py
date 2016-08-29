@@ -2,11 +2,10 @@ import networkx as nx
 import pandas as pd
 #read excel file(scopus)
 #class paper_information()
-def temp():
-        print("ddd")
+
 def return_excel_n_th_sheet_as_dataframe(excel_name, n):
-                xl=pd.ExcelFile(excel_name)
-                return xl.parse(xl.sheet_names[n])
+	xl=pd.ExcelFile(excel_name)
+	return xl.parse(xl.sheet_names[n])
 
 def return_kwds_from_str(paper_str):	
 	return [elem.strip().lower() for elem in paper_str.split(";")]
@@ -25,7 +24,11 @@ def processed_kwd(kwd):
 #############
 #### main ######
 print( processed_kwd("dd-d* *  /dDDdfd ") )
-temp()
+
+scopus_csv_name="risk_bpm_raw.csv"
+csv_df = pd.read_csv(scopus_csv_name)
+
+
 #design paper class
 #save all related information about each paper
 
