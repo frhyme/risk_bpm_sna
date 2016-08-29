@@ -15,15 +15,19 @@ def processed_kwd(kwd):
 	for each_target_char in target_char_lst:
 		kwd=kwd.replace(each_target_char, replacer)
 	while "  " in kwd:
-		kwd=kwd.replace("  ", " ").strip().lower()
+		kwd=kwd.replace("  ", " ")
 	# how to make plural noun to singular
 	# are there any library can be used?
-	return kwd
+	return kwd.strip().lower()
 class paper:
         def __init__(self, csv_df_elem):
                 self.authors = [ processed_kwd(elem) for elem in csv_df_elem["Authors"].split(".,") ]
                 self.title = csv_df_elem["Title"]
                 self.abstract = csv_df_elem["Abstract"]
+                self.author_kwds = [ processed_kwd(elem) for elem in csv_df_elem["Author Keywords"].split(";") ]
+                self.index_kwds = [ processed_kwd(elem) for elem in csv_df_elem["Index Keywords"].split(";") ]
+                self.document_type = csv_df_elem["Document Type"]
+                self.references = [ elem.strip() for elem in csv_df_elem["References"].split(";")]
         def __str__(self):
                 return self.title
 #######
@@ -33,12 +37,15 @@ class paper:
 
 scopus_csv_name="risk_bpm_raw.csv"
 csv_df = pd.read_csv(scopus_csv_name)
+#######Dataframe data preprocessing
 csv_df.columns = csv_df.columns.str.replace("\ufeff", "")#encoding
-print( "Headers in csv DataFrame\n", csv_df.columns.values )
+csv_df["Year"]
+print( "Headers in csv DataFrame:\n", csv_df.columns.values )
 
 
 temp=paper(csv_df.iloc[0])
-print(temp.authors)
+
+print( "\n".join( temp.references ) )
 print(temp)
 
 ##Data preprocessing
