@@ -27,7 +27,11 @@ print( processed_kwd("dd-d* *  /dDDdfd ") )
 
 scopus_csv_name="risk_bpm_raw.csv"
 csv_df = pd.read_csv(scopus_csv_name)
+csv_df_lst=csv_df.values.tolist()
 
+print( csv_df.columns )
+#print( csv_df_lst[0] )
+#print( csv_df.columns )
 
 #design paper class
 #save all related information about each paper
