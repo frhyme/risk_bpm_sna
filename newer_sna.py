@@ -26,13 +26,15 @@ class paper:
                 self.title = csv_df_elem["Title"]
                 self.year = csv_df_elem["Year"]
                 self.abstract = csv_df_elem["Abstract"] if  not pd.isnull( csv_df_elem["Abstract"] ) else ""
-                self.author_kwds = [ processed_kwd(elem) for elem in csv_df_elem["Author Keywords"].split(";") ] if not pd.isnull( csv_df_elem["Author Keywords"] ) else []
-                self.index_kwds = [ processed_kwd(elem) for elem in csv_df_elem["Index Keywords"].split(";") ] if not pd.isnull( csv_df_elem["Index Keywords"] ) else []
+                self.author_kwds = sorted( [ processed_kwd(elem) for elem in csv_df_elem["Author Keywords"].split(";") ] if not pd.isnull( csv_df_elem["Author Keywords"] ) else [] )
+                self.index_kwds = sorted( [ processed_kwd(elem) for elem in csv_df_elem["Index Keywords"].split(";") ] if not pd.isnull( csv_df_elem["Index Keywords"] ) else [] )
                 self.document_type = csv_df_elem["Document Type"]
-                self.references = [ elem.strip() for elem in csv_df_elem["References"].split(";")] if not pd.isnull( csv_df_elem["References"] ) else []
-                self.affiliations = [ elem.strip() for elem in csv_df_elem["Affiliations"].split(";")] if not pd.isnull( csv_df_elem["Affiliations"] ) else []
+                self.references = sorted( [ elem.strip() for elem in csv_df_elem["References"].split(";")] if not pd.isnull( csv_df_elem["References"] ) else [] )
+                self.affiliations = sorted( [ elem.strip() for elem in csv_df_elem["Affiliations"].split(";")] if not pd.isnull( csv_df_elem["Affiliations"] ) else [] )
         def __str__(self):
                 return self.title
+        def return_arcs():
+                
 def return_elem_count_lst(all_lst):
         elem_count_dict={ elem:all_lst.count(elem) for elem in list(set(all_lst)) }
         return sorted( [[key, elem_count_dict[key] ]for key in elem_count_dict], key=lambda x: x[1], reverse=True)
