@@ -2,10 +2,11 @@ import networkx as nx
 import pandas as pd
 #read excel file(scopus)
 #class paper_information()
-	
+def temp():
+        print("ddd")
 def return_excel_n_th_sheet_as_dataframe(excel_name, n):
-	xl=pd.ExcelFile(excel_name)
-	return xl.parse(xl.sheet_names[n])
+                xl=pd.ExcelFile(excel_name)
+                return xl.parse(xl.sheet_names[n])
 
 def return_kwds_from_str(paper_str):	
 	return [elem.strip().lower() for elem in paper_str.split(";")]
@@ -19,10 +20,12 @@ def processed_kwd(kwd):
 	# how to make plural noun to singular
 	# are there any library can be used?
 	return kwd
+                
 #######
 #############
 #### main ######
 print( processed_kwd("dd-d* *  /dDDdfd ") )
+temp()
 #design paper class
 #save all related information about each paper
 
