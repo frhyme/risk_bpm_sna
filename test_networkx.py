@@ -2,6 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import random as rnd
 import scipy
+from scipy import sparse
 
 print("networkx version: "+nx.__version__)
 #arc_lst=[(i, j, rnd.random() )for i in range(1, 10) for j in range(1, 10) ]
@@ -25,7 +26,7 @@ print("muti_graph:", nx.degree(m_g))
 print("centrality")
 print("muti_graph:", nx.degree_centrality(m_g))
 print("closeness")
-print("flow weighted graph:", nx.current_flow_closeness_centrality(g))
+print( "flow weighted graph", nx.current_flow_closeness_centrality(g, weight="weight") )
 print("betweenness")
 print("flow weighted graph:", nx.current_flow_betweenness_centrality(g))
 
