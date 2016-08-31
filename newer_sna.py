@@ -20,12 +20,17 @@ print("Paper count", len(papers))
 #all_author_kwds=[kwd for paper_elem in papers for kwd in paper_elem.author_kwds ]
 #all_author_kwds_dict={ kwd:all_author_kwds.count(kwd) for kwd in list(set(all_author_kwds)) }
 #all_author_kwds_count_lst= sorted( [[key, all_author_kwds_dict[key] ]for key in all_author_kwds_dict], key=lambda x: x[1], reverse=True)
+print("Author kwd")
 all_author_kwd_count_lst = return_elem_count_lst( [kwd for paper_elem in papers for kwd in paper_elem.author_kwds ] )
 all_author_kwd_arc_count_lst = return_elem_count_lst( [(paper_elem.author_kwds[i], paper_elem.author_kwds[j]) for paper_elem in papers for i in range(0, len(paper_elem.author_kwds)-1) for j in range(i+1, len(paper_elem.author_kwds))])
 print( all_author_kwd_count_lst[0:10] )
 print( all_author_kwd_arc_count_lst[0:10] )
+
+print("Index kwd")
 all_index_kwd_count_lst = return_elem_count_lst( [kwd for paper_elem in papers for kwd in paper_elem.index_kwds ] )
+all_index_kwd_arc_count_lst = return_elem_count_lst( [(paper_elem.index_kwds[i], paper_elem.index_kwds[j]) for paper_elem in papers for i in range(0, len(paper_elem.index_kwds)-1) for j in range(i+1, len(paper_elem.index_kwds))])
 print( all_index_kwd_count_lst[0:10] )
+print( all_index_kwd_arc_count_lst[0:10] )
 """
 all_author_count_lst = return_elem_count_lst( [author for paper_elem in papers for author in paper_elem.authors ] )
 print( all_author_count_lst[0:10] )
